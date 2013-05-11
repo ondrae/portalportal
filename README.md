@@ -1,17 +1,10 @@
-Data Portals API
+Portal Portal
 =========================
 
+A data portal to find data portals.
 
-Given a location this API will return that data portals that cover those jurisdictions.
+### How to
 
-
-### Portals
-
-    /dataportal/v1/portals.json
-    
-    
-    lat=lat
-    lon=lon
-    
-
-
+	Put in a latitude and longitude and get back a url to a data portal!
+	
+	http://portalportal.herokuapp.com/portalportal/v1/portals.json?latitude=39.062&longitude=-94.548

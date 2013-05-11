@@ -16,37 +16,27 @@ def cors_response(data):
 def index():
     return "Hello Api"
 
-
-@app.route("/dataportal/v1/portals.json")
-def businesses():
-    lat = request.args.get("lat", "")
-    lon = request.args.get("lon", "")
-
+@app.route("/portalportal/v1/portals.json")
+def portalportal():
+    lat = request.args.get("latitude", "")
+    lon = request.args.get("longitude", "")
 
     carto_db_url = "http://cfa.cartodb.com/api/v2/sql"
-    params = {"q":"SELECT name, geo_id FROM all_census_places WHERE ST_CONTAINS(the_geom, ST_SetSRID(ST_Point(%s, %s),4326));" % (lat, lon)}
-
-    # Get lookup the county / state / etc by lat lng from cartodb
+    params = {"q":"SELECT name, state_name FROM all_census_places WHERE ST_CONTAINS(the_geom, ST_SetSRID(ST_Point(%s, %s),4326));" % (lon, lat)}
 
     places = requests.get(carto_db_url, params=params)
 
-    geo_id = places.json()["rows"][0]["geo_id"]
-    name = places.json()["rows"][0]["name"]
+    state_name = places.json()["rows"][0]["state_name"]
+    city_name = places.json()["rows"][0]["name"]
+    city_state = city_name + ', ' + state_name
 
-    f =open("data/portals.json")
-    contents = f.read()
-
-    portals = json.loads(contents)
-    portal = portals['admin'][geo_id]
-
-    # lookup county / state in portal list
-
-    res = {"portal_url":portal, "geo_id":geo_id, "name":name}
+    f = open("data/portals.json").read()
+    portals = json.loads(f)
+    
+    portal_url = portals['city'][city_state]
+    res = {"portal_url": portal_url, "city": city_name, "state" : state_name}
 
     return cors_response(Response(json.dumps(res), mimetype='application/json'))
-
-
-
 
 if __name__ == "__main__":
     app.run()

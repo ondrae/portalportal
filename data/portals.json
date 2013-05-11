@@ -1,1 +1,16 @@
-{"admin":{"1600000US3651000":"http://data.nyc.gov"}}
+{
+    "city": {
+        "New York, New York": "http://data.nyc.gov",
+        "San Francisco, California": "http://www.datasf.org",
+        "Kansas City, Missouri": "http://data.kcmo.org"
+    },
+    "county": {
+        "Alameda, California": "https://data.acgov.org/"
+    },
+    "state": {
+        "colorado": "http://opencolorado.org/"
+    },
+    "country": {
+        "USA": "http://www.data.gov"
+    }
+}
