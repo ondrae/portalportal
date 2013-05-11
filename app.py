@@ -43,9 +43,8 @@ def portalportal():
     city_state = city_name + ', ' + state_name
     county_state = county_name + ', ' + state_name
 
-    response = requests.get('http://ondrae.github.io/portalportal/static/data/portals.json')
+    response = requests.get('https://raw.github.com/ondrae/portalportal/master/static/data/portals.json')
     portals = response.json()
-    portals = json.loads(f)
     
     city_portal = portals['city'][city_state]
     county_portal = portals['county'][county_state]
