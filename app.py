@@ -29,33 +29,39 @@ def portalportal():
 
     latitude, longitude = get_coords()
 
-    geonames_url = 'http://api.geonames.org/extendedFindNearby?lat='+latitude+'&lng='+longitude+'&username=ondrae'
+    def get_geonames(latitude, longitude):
+        geonames_url = 'http://api.geonames.org/extendedFindNearby?lat='+latitude+'&lng='+longitude+'&username=ondrae'
+        response = requests.get(geonames_url)
+        geonames = xmltodict.parse(response.text)
+        city_name = geonames['geonames']['address']['placename']
+        county_name = geonames['geonames']['address']['adminName2']
+        state_code = geonames['geonames']['address']['adminCode1']
+        state_name = geonames['geonames']['address']['adminName1']
+        country_code = geonames['geonames']['address']['countryCode']
+        return city_name, county_name, state_code, state_name, country_code
 
-    response = requests.get(geonames_url)
-    geonames = xmltodict.parse(response.text)
-    
-    city_name = geonames['geonames']['address']['placename']
-    county_name = geonames['geonames']['address']['adminName2']
-    state_code = geonames['geonames']['address']['adminCode1']
-    state_name = geonames['geonames']['address']['adminName1']
-    country_code = geonames['geonames']['address']['countryCode']
+    city_name, county_name, state_code, state_name, country_code = get_geonames(latitude, longitude)
 
-    city_state = city_name + ', ' + state_name
-    county_state = county_name + ', ' + state_name
+    def get_portals(city_name, county_name, state_code, state_name, country_code):
+        city_state = city_name + ', ' + state_name
+        county_state = county_name + ', ' + state_name
+        response = requests.get('https://raw.github.com/ondrae/portalportal/master/static/data/portals.json')
+        portals = response.json()
+        city_portal = portals['city'][city_state]
+        county_portal = portals['county'][county_state]
+        state_portal = portals['state'][state_name]
+        country_portal = portals['country'][country_code]
+        return city_portal, county_portal, state_portal, country_portal
 
-    response = requests.get('https://raw.github.com/ondrae/portalportal/master/static/data/portals.json')
-    portals = response.json()
-    
-    city_portal = portals['city'][city_state]
-    county_portal = portals['county'][county_state]
-    state_portal = portals['state'][state_name]
-    country_portal = portals['country'][country_code]
+    city_portal, county_portal, state_portal, country_portal = get_portals(city_name, county_name, state_code, state_name, country_code)
 
-    res = {}
-    res["country"] = {"name" : country_code, "data_portal_url" : country_portal}
-    res["state"] = {"name" : state_name, "data_portal_url" : state_portal}
-    res["county"] = {"name" : county_name, "data_portal_url" : county_portal}
-    res["city"] = {"name" : city_name, "data_portal_url" : city_portal}
+    def build_response(city_name, county_name, state_code, state_name, country_code, city_portal, county_portal, state_portal, country_portal):
+        res = {}
+        res["country"] = {"name" : country_code, "data_portal_url" : country_portal}
+        res["state"] = {"name" : state_name, "data_portal_url" : state_portal}
+        res["county"] = {"name" : county_name, "data_portal_url" : county_portal}
+        res["city"] = {"name" : city_name, "data_portal_url" : city_portal}
+        return res
 
     return cors_response(Response(json.dumps(res), mimetype='application/json'))
 
