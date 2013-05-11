@@ -1,6 +1,5 @@
-import json, os
-from flask import Flask, request, Response, make_response
-import requests
+import os, requests, xmltodict, json
+from flask import Flask, request, Response, make_response, url_for
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -14,27 +13,50 @@ def cors_response(data):
 
 @app.route("/")
 def index():
-    return "Hello Api"
+    return "Try out an API call. <br /> http://portalportal.herokuapp.com/portalportal/v1/portals.json?latitude=39.062&longitude=-94.548"
 
 @app.route("/portalportal/v1/portals.json")
 def portalportal():
-    lat = request.args.get("latitude", "")
-    lon = request.args.get("longitude", "")
 
-    carto_db_url = "http://cfa.cartodb.com/api/v2/sql"
-    params = {"q":"SELECT name, state_name FROM all_census_places WHERE ST_CONTAINS(the_geom, ST_SetSRID(ST_Point(%s, %s),4326));" % (lon, lat)}
+    def get_coords():
+        latitude = None
+        longitude = None
+        latitude = request.args.get("latitude", "")
+        longitude = request.args.get("longitude", "")
+        if not latitude or not longitude:
+            return "Make sure to put in a latitude and logitude, like http://portalportal.herokuapp.com/portalportal/v1/portals.json?latitude=39.062&longitude=-94.548"
+        return latitude, longitude
 
-    places = requests.get(carto_db_url, params=params)
+    latitude, longitude = get_coords()
 
-    state_name = places.json()["rows"][0]["state_name"]
-    city_name = places.json()["rows"][0]["name"]
+    geonames_url = 'http://api.geonames.org/extendedFindNearby?lat='+latitude+'&lng='+longitude+'&username=ondrae'
+
+    response = requests.get(geonames_url)
+    geonames = xmltodict.parse(response.text)
+    
+    city_name = geonames['geonames']['address']['placename']
+    county_name = geonames['geonames']['address']['adminName2']
+    state_code = geonames['geonames']['address']['adminCode1']
+    state_name = geonames['geonames']['address']['adminName1']
+    country_code = geonames['geonames']['address']['countryCode']
+
     city_state = city_name + ', ' + state_name
+    county_state = county_name + ', ' + state_name
 
-    f = open("data/portals.json").read()
+    response = requests.get('http://ondrae.github.io/portalportal/static/data/portals.json')
+    portals = response.json()
     portals = json.loads(f)
     
-    portal_url = portals['city'][city_state]
-    res = {"portal_url": portal_url, "city": city_name, "state" : state_name}
+    city_portal = portals['city'][city_state]
+    county_portal = portals['county'][county_state]
+    state_portal = portals['state'][state_name]
+    country_portal = portals['country'][country_code]
+
+    res = {}
+    res["country"] = {"name" : country_code, "data_portal_url" : country_portal}
+    res["state"] = {"name" : state_name, "data_portal_url" : state_portal}
+    res["county"] = {"name" : county_name, "data_portal_url" : county_portal}
+    res["city"] = {"name" : city_name, "data_portal_url" : city_portal}
 
     return cors_response(Response(json.dumps(res), mimetype='application/json'))
 

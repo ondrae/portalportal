@@ -2,15 +2,17 @@
     "city": {
         "New York, New York": "http://data.nyc.gov",
         "San Francisco, California": "http://www.datasf.org",
-        "Kansas City, Missouri": "http://data.kcmo.org"
+        "Kansas City, Missouri": "http://data.kcmo.org",
+        "Oakland, California" : "https://data.oaklandnet.com/"
     },
     "county": {
         "Alameda, California": "https://data.acgov.org/"
     },
     "state": {
-        "colorado": "http://opencolorado.org/"
+        "California" : "http://data.ca.gov/",
+        "Colorado": "http://opencolorado.org/"
     },
     "country": {
-        "USA": "http://www.data.gov"
+        "US": "http://www.data.gov"
     }
 }
