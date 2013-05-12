@@ -1,18 +1,27 @@
 {
     "city": {
-        "New York, New York" : "http://data.nyc.gov",
-        "San Francisco, California" : "http://www.datasf.org",
-        "Kansas City, Missouri" : "http://data.kcmo.org",
-        "Oakland, California" : "https://data.oaklandnet.com/"
+        "New York, New York, US" : "http://data.nyc.gov",
+        "San Francisco, California, US" : "http://www.datasf.org",
+        "Kansas City, Missouri, US" : "http://data.kcmo.org",
+        "Oakland, California, US" : "https://data.oaklandnet.com/" 
+        // "Buenos Aires, Buneos Aires, AR" : "http://data.buenosaires.gob.ar/"
     },
     "county": {
-        "Alameda, California" : "https://data.acgov.org/"
+        "Alameda, California, US" : "https://data.acgov.org/"
     },
     "state": {
-        "California" : "http://data.ca.gov/",
-        "Colorado" : "http://opencolorado.org/"
+        "California, US" : "http://data.ca.gov/",
+        "Colorado, US" : "http://opencolorado.org/",
+        "Queensland, AU" : "https://data.qld.gov.au/"
     },
     "country": {
-        "US" : "http://www.data.gov"
+        "AT" : "http://data.gv.at/",
+        "BR" : "http://dados.gov.br/",
+        "DE" : "https://www.govdata.de/",
+        "NL" : "https://data.overheid.nl/",
+        "NO" : "http://data.norge.no/",
+        "GB" : "http://data.gov.uk/",
+        "US" : "http://www.data.gov",
+        "UY" : "https://catalogodatos.gub.uy/"
     }
 }
