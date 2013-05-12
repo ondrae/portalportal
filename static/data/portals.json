@@ -3,8 +3,7 @@
         "New York, New York, US" : "http://data.nyc.gov",
         "San Francisco, California, US" : "http://www.datasf.org",
         "Kansas City, Missouri, US" : "http://data.kcmo.org",
-        "Oakland, California, US" : "https://data.oaklandnet.com/" 
-        // "Buenos Aires, Buneos Aires, AR" : "http://data.buenosaires.gob.ar/"
+        "Oakland, California, US" : "https://data.oaklandnet.com/"
     },
     "county": {
         "Alameda, California, US" : "https://data.acgov.org/"
