@@ -13,7 +13,7 @@ There are open data portals all over the place, with new ones coming online ever
 
 	Put in a latitude and longitude and get back a heirarchy of data portal urls.
 	
-	http://portalportal.herokuapp.com/portalportal/v1/portals.json?latitude=37.80508&longitude=-122.273071
+	http://portalportal.herokuapp.com/portalportal/portals.json?latitude=37.80508&longitude=-122.273071
 
 	You'll get back a json response like so:
 	{
