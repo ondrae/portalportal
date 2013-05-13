@@ -21,6 +21,9 @@ def portalportal():
     latitude = request.args.get("latitude", "")
     longitude = request.args.get("longitude", "")
 
+    if not latitude or not longitude:
+        return "Put in a latitude and longitude. <br /> http://portalportal.herokuapp.com/v1/portals.json?latitude=37.80508&longitude=-122.273071"
+
     portalData = PortalData(latitude, longitude)
     portalData.get_geonames()
     portalData.get_portals()
