@@ -20,7 +20,7 @@ class PortalData:
         self.city_state_country = self.city_name + ', ' + self.state_name + ', ' + self.country_code
         self.county_state_country = self.county_name + ', ' + self.state_name + ', ' + self.country_code
         self.state_country = self.state_name + ', ' + self.country_code
-        response = requests.get('https://raw.github.com/ondrae/portalportal/testing/static/data/portals.json')
+        response = requests.get('https://raw.github.com/ondrae/portalportal/master/static/data/portals.json')
         portals = response.json()
         self.city_portal = portals['city'][self.city_state_country]
         self.county_portal = portals['county'][self.county_state_country]
