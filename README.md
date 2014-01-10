@@ -9,10 +9,10 @@ For the past few months, we’ve worked with Colorado branding firm [Dojo4](http
 
 ## Who’s Working On It
 
-[Michal Migurski](http://alpha.codeforamerica.org/people/michal-migurski): code, hosting, copy/paste
-[Cyd Harrell](http://alpha.codeforamerica.org/people/cyd-harrell): information architecture, design
-[Dana Oshiro](http://alpha.codeforamerica.org/people/dana-oshiro): content, copy/paste
-[Andrew Hyder](http://alpha.codeforamerica.org/people/andrew-hyder): feedback
+* [Michal Migurski](http://alpha.codeforamerica.org/people/michal-migurski): code, hosting, copy/paste
+* [Cyd Harrell](http://alpha.codeforamerica.org/people/cyd-harrell): information architecture, design
+* [Dana Oshiro](http://alpha.codeforamerica.org/people/dana-oshiro): content, copy/paste
+* [Andrew Hyder](http://alpha.codeforamerica.org/people/andrew-hyder): feedback
 
 ## How to contribute
 
@@ -24,7 +24,12 @@ We need your help to keep our content accurate and up to date. The easiest way f
 * We need quality photos for page headers. Should be about 1200 x 500, JPG compressed to 150kb max.
 
 #### <a name="pulls"></a>Submitting a Pull Request
-An easy way to edit submit a pull request for just a change in text is to find the page you'd like to edit on the [static-site branch](https://github.com/codeforamerica/codeforamerica.org/tree/static-site). Then use Github's built in editor to make your changes. Down below the editor window, include a brief one sentence description of what you changed. Something like "Updated Andrew Hyder's bio". Click the green Propose File Change button. You'll get to review your changes. If everything looks right, click the green "Send pull request" button. Done!
+An easy way to submit a pull request for just simple text changes is to: 
+1. Find the page you'd like to edit on the [static-site branch](https://github.com/codeforamerica/codeforamerica.org/tree/static-site). 
+2. Use Github's built in editor to make your changes.
+3. Down below the editor window, include a brief one sentence description of what you changed. Something like "Updated Andrew Hyder's bio". 
+4. Click the green Propose File Change button.  
+5. You'll get to review your changes. If everything looks right, click the green "Send pull request" button.
 
 If you need to add or replace an image, you'll need to:
 1. Fork the project.
