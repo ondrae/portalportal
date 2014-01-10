@@ -1,43 +1,48 @@
-Portal Portal
-=========================
+Code For America Dot Org
+========================
 
-## <a name="about"></a>About
+## Description
 
-A data portal to find data portals. Plug in a point and find all the data portals that have data about that point. This is a Labs Friday project of Code for America. This means it was an expirement done in one day. Any other development pass that Friday means someone got excited about the idea and kept building on it.
+Code for America is redoing our website.
 
-#### Why does portalportal exist?
+For the past few months, we’ve worked with Colorado branding firm [Dojo4](http://dojo4.com/), Brighton web design firm [Clearleft](http://clearleft.com/), and our own internal communications and technology teams on a new visual design and front-end for the Code for America website. Today, we’re making the first of this work public and asking for input from the CfA community to ensure that the information presented on the site is accurate and up-to-date.
 
-There are open data portals all over the place, with new ones coming online everyday. Portalportal is an attempt by Code for America to help developers find them.
+## Who’s Working On It
 
-### How to use
+[Michal Migurski](http://alpha.codeforamerica.org/people/michal-migurski): code, hosting, copy/paste
+[Cyd Harrell](http://alpha.codeforamerica.org/people/cyd-harrell): information architecture, design
+[Dana Oshiro](http://alpha.codeforamerica.org/people/dana-oshiro): content, copy/paste
+[Andrew Hyder](http://alpha.codeforamerica.org/people/andrew-hyder): feedback
 
-	Put in a latitude and longitude and get back a heirarchy of data portal urls.
-	
-	http://portalportal.herokuapp.com/v1/portals.json?latitude=37.80508&longitude=-122.273071
+## How to contribute
 
-	You'll get back a json response like so:
-	{
-		county: {
-			data_portal_url: "https://data.acgov.org/",
-			name: "Alameda"
-		},
-		country: {
-			data_portal_url: "http://www.data.gov",
-			name: "US"
-		},
-		state: {
-			data_portal_url: "http://data.ca.gov/",
-			name: "California"
-		},
-		city: {
-			data_portal_url: "https://data.oaklandnet.com/",
-			name: "Oakland"
-		}
-	}
+#### Specific help we need
+We need your help to keep our content accurate and up to date. The easiest way for to help is to submit a pull request with one of the below: 
+* For members of the community including fellows, brigade captains, and staff, find yourself and your friends in the [big list of people](http://alpha.codeforamerica.org/people/) or one of the [lists of civic hackers](http://alpha.codeforamerica.org/geeks/our-geeks/) and let us know if your bio is correct and photo current. Personal photos should be about 200 x 200.
+* If you built an app or project as part of the fellowship or accelerator programs, find it on the [apps page](http://alpha.codeforamerica.org/apps) and verify that we’ve got it described accurately.
+* Check government information for brigades and fellowships on the [2014 government partners](http://alpha.codeforamerica.org/cities/2014-cities) and [alumni government partners]([http://alpha.codeforamerica.org/cities/alumni]) pages and fill in any blanks you might find.
+* We need quality photos for page headers. Should be about 1200 x 500, JPG compressed to 150kb max.
 
-## <a name="contributing"></a>Contributing
+#### <a name="pulls"></a>Submitting a Pull Request
+An easy way to edit submit a pull request for just a change in text is to find the page you'd like to edit on the [static-site branch](https://github.com/codeforamerica/codeforamerica.org/tree/static-site). Then use Github's built in editor to make your changes. Down below the editor window, include a brief one sentence description of what you changed. Something like "Updated Andrew Hyder's bio". Click the green Propose File Change button. You'll get to review your changes. If everything looks right, click the green "Send pull request" button. Done!
 
-* To add a link to a data portal:
-** Clone this repo
-** Add the link in the 'static/data/portals.json' file.
-** Order it alphabetically if you please.
+If you need to add or replace an image, you'll need to:
+1. Fork the project.
+2. Create a topic branch.
+3. Add the image in the correct directory.
+4. Commit and push your changes.
+5. Submit a pull request.
+
+#### <a name="issues"></a>Submitting an Issue
+We use the [GitHub issue tracker][issues] to track bugs and features. Before
+submitting a bug report or feature request, check to make sure it hasn't
+already been submitted. You can indicate support for an existing issue by
+voting it up. When submitting a bug report, please include a screenshot and any additioanl details that can help us debug, such as your operating system and browser version.
+
+## Technology Patterns
+Uses Jekyll for templating – converted HTML files are in the _site folder.
+
+## <a name="copyright"></a>Copyright
+Copyright (c) 2013 Code for America. See [LICENSE][] for details.
+
+[license]: https://github.com/codeforamerica/codeforamerica.org/blob/master/LICENSE
